@@ -13,6 +13,9 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
+# Genera el cliente de Prisma
+RUN npx prisma generate
+
 # Expose the port Next.js runs on
 EXPOSE 3000
 
