@@ -1,0 +1,13 @@
+@import '../../../styles/variables';
+
+.messageContainer {
+    display: inline-block;
+    padding: 10px;
+    border: 0.1rem solid $color-tertiary;
+    border-radius: 0.5rem;
+    max-width: 70%; 
+    word-wrap: break-word;
+    background-color: transparent; 
+    color: $color-text;
+  }
+  
