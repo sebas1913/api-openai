@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchUsers() {
       try {
-        const response = await fetch("/api/users");
+        const response = await fetch("/api/chat");
         if (!response.ok) {
           throw new Error("Failed to fetch users");
         }
