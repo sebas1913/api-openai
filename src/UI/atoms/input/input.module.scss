@@ -1,0 +1,24 @@
+@import '../../../styles/variables';
+
+.input {
+    font-family: var(--font-principal);
+    width: 60%;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    border: none;
+    border: 0.1rem solid $color-tertiary;
+    font-size: 1.2rem;
+    color: $color-text;
+    background-color: $color-secondary;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .input{
+        width: 15rem;
+    }
+}
+

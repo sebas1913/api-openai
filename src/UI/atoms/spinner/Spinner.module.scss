@@ -1,0 +1,28 @@
+@import '../../../styles/variables';
+
+.spinnerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+  
+  .spinner{
+    border: 0.8rem solid $color-secondary;
+    border-top: 0.8rem solid $color-primary;
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+    animation: spin 3s linear infinite;
+  
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+  
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+  
