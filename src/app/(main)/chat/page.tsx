@@ -11,7 +11,7 @@ export default function Home() {
             <div className={styles.containerTitles}>
                 <Title level={2}>¿Cómo puedo ayudarte con tu búsqueda?</Title>
                 <div className={styles.logo}>
-                    <Image src="/images/logo.png" alt="" width={70} height={50} />
+                    <Image src="/images/IA.png" alt="" width={70} height={50} />
                 </div>
             </div>
 

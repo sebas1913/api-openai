@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './spinner.module.scss';
+import styles from './Spinner.module.scss';
 
 const Spinner: React.FC = () => {
     return (
@@ -10,3 +10,4 @@ const Spinner: React.FC = () => {
 };
 
 export default Spinner;
+    
