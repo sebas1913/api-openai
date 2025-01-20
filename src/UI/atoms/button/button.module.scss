@@ -1,0 +1,23 @@
+@import '../../../styles/variables';
+
+.button {
+    font-family: var(--font-principal);
+    padding: 0rem 1rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+
+    &:active{
+        transform: scale(0.95);
+    }
+}
+
+.primary {
+    background-color: $color-primary;
+    color: $color-white;
+}
+
+.secondary{
+    background-color: $color-secondary;
+}
