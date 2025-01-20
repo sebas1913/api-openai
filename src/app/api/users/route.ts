@@ -3,6 +3,20 @@ import { NextResponse } from 'next/server'
 
 const prisma = new PrismaClient()
 
+// GET - Obtener todos los usuarios
+export async function GET() {
+  try {
+    const users = await prisma.user.findMany()  // Recupera todos los usuarios de la base de datos
+    return NextResponse.json(users, { status: 200 })
+  } catch (error: unknown) {
+    console.error('GET Error:', error)  // Agregar log para el error al obtener usuarios
+    return NextResponse.json(
+      { error: 'Something went wrong' },
+      { status: 500 }
+    )
+  }
+}
+
 // POST - Crear un nuevo usuario
 export async function POST(request: Request) {
   try {
@@ -37,20 +51,6 @@ export async function POST(request: Request) {
       }
     }
     
-    return NextResponse.json(
-      { error: 'Something went wrong' },
-      { status: 500 }
-    )
-  }
-}
-
-// GET - Obtener todos los usuarios
-export async function GET() {
-  try {
-    const users = await prisma.user.findMany()  // Recupera todos los usuarios de la base de datos
-    return NextResponse.json(users, { status: 200 })
-  } catch (error: unknown) {
-    console.error('GET Error:', error)  // Agregar log para el error al obtener usuarios
     return NextResponse.json(
       { error: 'Something went wrong' },
       { status: 500 }
