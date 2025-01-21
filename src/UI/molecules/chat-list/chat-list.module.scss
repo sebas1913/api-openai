@@ -1,0 +1,25 @@
+@import '../../../styles/variables';
+
+.container {
+    margin-top: 1rem;
+
+    .card {
+        border: 0.1rem solid $color-tertiary;
+        padding: 1.3rem;
+        border-radius: 1rem;
+
+        .title {
+            color: $color-black;
+            padding: 0.2rem 0;
+        }
+
+        .list {
+            color: $color-text;
+            list-style: none;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+
+}
