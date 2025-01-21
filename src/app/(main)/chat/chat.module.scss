@@ -1,19 +1,32 @@
 @import '../../../styles/variables';
 
-.containerTitles{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 70vh;
-    color: $color-text;
-    gap: 1rem;
+.containerTitles {
+  width: 90%;
+  margin: 2.5rem auto 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 70vh;
+  background-color: aqua;
+  color: $color-text;
+  gap: 1rem;
 
-    .logo{
-        animation: swing 5s infinite ease-in-out;
-    }
+  .logo {
+    animation: swing 5s infinite ease-in-out;
+  }
+}
+.assistantMessage {
+  justify-content: flex-start;
 }
 
+.searchBarWrapper {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+}
 
 @keyframes swing {
     0% {

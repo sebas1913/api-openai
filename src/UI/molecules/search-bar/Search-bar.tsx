@@ -9,20 +9,29 @@ interface SearchBarProps {
     // setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
     // handleSearch: () => void;
     placeholder: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onSend: () => void;
 }
 
-const SearchBar = ({  placeholder }: SearchBarProps) => {
+const SearchBar = ({  placeholder, value, onChange, onSend }: SearchBarProps) => {
+    const handleKeyPress = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            onSend();
+        }
+    };
     return (
         <div className={styles.searchContainer}>
             <Input
                 type="text"
                 placeholder={placeholder}
-                // value={searchTerm}
-                // onChange={(e) => setSearchTerm(e.target.value)}
+                value={value}
+                onChange={onChange}
+                onKeyDown={handleKeyPress}
             />
             <Button
                 variant="primary"
-                // onClick={handleSearch}
+                onClick={onSend}
             >
                 {Icons.send}
             </Button>
