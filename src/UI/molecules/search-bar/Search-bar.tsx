@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@/UI/atoms/button/Button';
-import Input from '@/UI/atoms/input/Input';
+import Textarea from '@/UI/atoms/textarea/Textarea';
 import styles from './searchbar.module.scss';
 import { Icons } from '@/UI/atoms/icons/Icons';
 
@@ -14,11 +14,9 @@ interface SearchBarProps {
 const SearchBar = ({  placeholder }: SearchBarProps) => {
     return (
         <div className={styles.searchContainer}>
-            <Input
-                type="text"
+            <Textarea
                 placeholder={placeholder}
-                // value={searchTerm}
-                // onChange={(e) => setSearchTerm(e.target.value)}
+                maxLength={255}
             />
             <Button
                 variant="primary"

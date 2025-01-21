@@ -1,12 +1,16 @@
 .searchContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    
     button{
-        height: 2.5rem;
+        padding: 1rem;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
     }
-    input{
-        height: 2.5rem;
+    textarea{
+        height: 3.8rem;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
