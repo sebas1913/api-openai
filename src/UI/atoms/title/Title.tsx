@@ -1,5 +1,4 @@
 import { JSX } from "react";
-import styles from './title.module.scss';
 
 interface TitleProps {
     children: React.ReactNode;
@@ -7,11 +6,11 @@ interface TitleProps {
     className?: string;
 }
 
-const Title: React.FC<TitleProps> = ({ children, level }) => {
+const Title: React.FC<TitleProps> = ({ children, level, className }) => {
     const TitleTag = `h${level}` as keyof JSX.IntrinsicElements;
 
     return (
-        <TitleTag className={styles.title}>
+        <TitleTag className={className}>
             {children}
         </TitleTag>
     );

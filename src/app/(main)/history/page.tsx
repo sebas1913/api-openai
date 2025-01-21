@@ -1,61 +1,41 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import styles from './history.module.scss';
 import Spinner from "@/UI/atoms/spinner/Spinner";
-// import Message from "@/UI/molecules/message-container/Message";
-// import SearchBar from "@/UI/molecules/search-bar/Search-bar";
+import ChatList from "@/UI/molecules/chat-list/Chat-list";
+import Title from "@/UI/atoms/title/Title";
 
-interface Answer{
-    id: string;
+interface Chat {
+    id: number;
+    question: string;
     answer: string;
     createdAt: string;
 }
 
-
 export default function History() {
-
-    const [chats, setChats] = useState<Answer[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
+    const [chats, setChats] = useState<Chat[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        async function fetchUsers() {
-            try {
-                const response = await fetch("/api/chat");
-                if (!response.ok) {
-                    throw new Error("Failed to fetch users");
-                }
-                const data = await response.json();
-                setChats(data);
+        const fetchChats = async () => {
+            const response = await fetch("/api/chat");
+            const data = await response.json();
+            setChats(data);
+            setIsLoading(false);
+        };
 
-            } catch (error) {
-                console.error("Error fetching chats:", error);
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        fetchUsers();
+        fetchChats();
     }, []);
 
     return (
-        <div>
-            <h1>Historial</h1>
-            <div>
-                {loading ? (
-                    <p><Spinner /></p>
-                ) : (
-                    <ul>
-                        {chats.map((chat) => (
-                            <li key={chat.id}>
-                                <p>{chat.createdAt}</p>
-                                <p>{chat.answer}</p>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </div>
-
+        <div className={styles.container}>
+            <Title level={1}>Chats</Title>
+            {isLoading ? (
+                <Spinner />
+            ) : (
+                <ChatList chats={chats} />
+            )}
         </div>
-
-    )
+    );
 }
