@@ -5,14 +5,18 @@ interface TextareaProps {
     placeholder?: string;
     className?: string;
     maxLength?: number;
+    value?: string;
+    onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-const Textarea: React.FC<TextareaProps> = ({ placeholder, className, maxLength, ...props }) => {
+const Textarea: React.FC<TextareaProps> = ({ placeholder, value, onChange, className, maxLength, ...props }) => {
     return (
         <textarea
             className={`textarea ${className || ''}`}
             placeholder={placeholder}
             maxLength={maxLength || 150}
+            value={value}
+            onChange={onChange}
             {...props}
         />
     );
