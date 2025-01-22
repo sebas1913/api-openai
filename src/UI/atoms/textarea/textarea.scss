@@ -1,0 +1,51 @@
+@import '../../../styles/variables';
+
+.textarea {
+    width: 60%;
+    font-family: var(--font-principal);
+    border: 0.1rem solid $color-tertiary;
+    border-radius: 25px;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: $color-text;
+    background-color: $color-secondary;
+    resize: none;
+    outline: none;
+    transition: border-color 0.3s;
+
+    &:focus {
+        border-color: #4a90e2; 
+        outline: none;
+    }
+
+    &::placeholder {
+        color: #a9a9a9;
+        font-family: var(--font-principal); 
+    }
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: $color-tertiary;
+        border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+        background: darken($color-tertiary, 10%);
+        cursor: auto;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: $color-secondary;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .input{
+        width: 15rem;
+    }
+}

@@ -15,8 +15,8 @@ model User {
 }
 
 model Query {
-  id        Int      @id @default(autoincrement())  // Identificador único
-  question  String   @db.VarChar(255)  // Pregunta con longitud máxima de 255 caracteres
-  answer    String?  @db.Text  // Respuesta (opcional) con longitud máxima de 5000 caracteres
-  createdAt DateTime @default(now())  // Fecha de creación con valor por defecto de la hora actual
+  id        Int      @id @default(autoincrement()) 
+  question  String   @db.VarChar(255) 
+  answer    String?  @db.Text  
+  createdAt DateTime @default(now())  
 }
