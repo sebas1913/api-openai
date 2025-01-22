@@ -11,9 +11,10 @@ type Chat = {
 
 type ChatListProps = {
   chats: Chat[];
+  onChatClick: (chat: Chat) => void;
 };
 
-const ChatList: React.FC<ChatListProps> = ({ chats }) => {
+const ChatList: React.FC<ChatListProps> = ({ chats,onChatClick }) => {
   const groupedChats = chats.reduce((acc, chat) => {
     const date = new Date(chat.createdAt).toLocaleDateString('es-ES', {
       day: 'numeric',
@@ -34,7 +35,7 @@ const ChatList: React.FC<ChatListProps> = ({ chats }) => {
           <Title level={3} className={styles.title}>{date}</Title>
           <ul>
             {chatsOnDate.map((chat) => (
-              <li key={chat.id} className={styles.list}>
+              <li key={chat.id} className={styles.list} onClick={() => onChatClick(chat)}>
                 <Paragraph>{chat.question}</Paragraph>
               </li>
             ))}
