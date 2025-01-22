@@ -19,9 +19,9 @@
 }
 
 .messagesContainer {
-  width: 90%;
+  width: 70%;
   margin: 2.5rem auto 0;
-  height: calc(100vh - 12rem); // Account for searchbar
+  height: calc(100vh - 12rem);
   overflow-y: auto;
   padding: 1rem;
 }
@@ -50,7 +50,15 @@
 }
 
 @keyframes swing {
-  0% { transform: rotate(-10deg); }
-  50% { transform: rotate(10deg); }
-  100% { transform: rotate(-10deg); }
+  0% {
+    transform: rotate(-10deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+    transform: rotate(-10deg);
+  }
 }
