@@ -5,21 +5,20 @@ import styles from './searchbar.module.scss';
 import { Icons } from '@/UI/atoms/icons/Icons';
 
 interface SearchBarProps {
-    // searchTerm: string;
-    // setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
-    // handleSearch: () => void;
     placeholder: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onSend: () => void;
+    disabled?: boolean;
 }
 
-const SearchBar = ({  placeholder, value, onChange, onSend }: SearchBarProps) => {
+const SearchBar = ({ placeholder, value, onChange, onSend, disabled }: SearchBarProps) => {
     const handleKeyPress = (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter' && !disabled) {
             onSend();
         }
     };
+
     return (
         <div className={styles.searchContainer}>
             <Input
@@ -28,10 +27,12 @@ const SearchBar = ({  placeholder, value, onChange, onSend }: SearchBarProps) =>
                 value={value}
                 onChange={onChange}
                 onKeyDown={handleKeyPress}
+                disabled={disabled}
             />
             <Button
                 variant="primary"
                 onClick={onSend}
+                disabled={disabled}
             >
                 {Icons.send}
             </Button>

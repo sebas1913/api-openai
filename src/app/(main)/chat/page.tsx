@@ -10,35 +10,49 @@ interface ChatMessage {
     role: 'user' | 'assistant';
     content: string;
 }
+
 export default function Chat() {
     const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [question, setQuestion] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSendMessage = async () => {
         if (!question.trim()) return;
 
-        const newMessage = {
+        setIsLoading(true);
+        const userMessage = {
             role: 'user' as const,
             content: question
         };
         
-        setMessages(prev => [...prev, newMessage]);
+        setMessages(prev => [...prev, userMessage]);
 
         try {
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: question }),
+                body: JSON.stringify({ question }), 
             });
 
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
+
             const data = await response.json();
+            
             setMessages(prev => [...prev, {
                 role: 'assistant',
-                content: data.response
+                content: data.answer
             }]);
             setQuestion('');
         } catch (error) {
             console.error('Error:', error);
+            setMessages(prev => [...prev, {
+                role: 'assistant',
+                content: 'Lo siento, hubo un error al procesar tu mensaje.'
+            }]);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -72,10 +86,9 @@ export default function Chat() {
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
                     onSend={handleSendMessage}
+                    disabled={isLoading}
                 />
             </div>
         </div>
     );
-
-
 }
