@@ -24,14 +24,14 @@ export default function Chat() {
             role: 'user' as const,
             content: question
         };
-        
+
         setMessages(prev => [...prev, userMessage]);
 
         try {
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ question }), 
+                body: JSON.stringify({ question }),
             });
 
             if (!response.ok) {
@@ -39,7 +39,7 @@ export default function Chat() {
             }
 
             const data = await response.json();
-            
+
             setMessages(prev => [...prev, {
                 role: 'assistant',
                 content: data.answer
@@ -68,15 +68,20 @@ export default function Chat() {
             ) : (
                 <div className={styles.messagesContainer}>
                     {messages.map((message, index) => (
-                        <div 
-                            key={index} 
-                            className={`${styles.messageWrapper} ${
-                                message.role === 'user' ? styles.userMessage : styles.assistantMessage
-                            }`}
+                        <div
+                            key={index}
+                            className={`${styles.messageWrapper} ${message.role === 'user' ? styles.userMessage : styles.assistantMessage
+                                }`}
                         >
+                            {message.role === 'assistant' && (
+                                <div className={styles.avatar}>
+                                    <Image src="/images/IA.png" alt="Logo IA" width={48} height={40} />
+                                </div>
+                            )}
                             <Message text={message.content} />
                         </div>
                     ))}
+
                 </div>
             )}
 

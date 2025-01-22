@@ -19,7 +19,7 @@
 }
 
 .messagesContainer {
-  width: 70%;
+  width: 65%;
   margin: 2.5rem auto 0;
   height: calc(100vh - 12rem);
   overflow-y: auto;
@@ -33,6 +33,12 @@
 
 .assistantMessage {
   justify-content: flex-start;
+  display: flex;
+  align-items: end;
+
+  .avatar{
+    margin-right: 0.5rem;
+  }
 }
 
 .userMessage {
