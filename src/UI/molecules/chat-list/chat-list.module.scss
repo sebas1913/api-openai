@@ -14,11 +14,35 @@
             padding: 0.2rem 0;
         }
 
+        .chatsContainer {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         .list {
             color: $color-text;
             list-style: none;
             text-decoration: underline;
             cursor: pointer;
+        }
+
+        .btnDeleteContainer {
+            width: 2.25rem;
+
+            .btnDelete {
+                background-color: $color-danger;
+                color: $color-white;
+                border: none;
+                cursor: pointer;
+                border-radius: 0.3rem;
+
+                svg {
+                    fill: $color-white;
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
+            }
         }
     }
 

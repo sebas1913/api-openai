@@ -37,13 +37,36 @@ export default function History() {
     const closeModal = () => {
         setSelectedChat(null);
     };
+
+    const handleDeleteChat = async (id: number) => {
+        const confirmDelete = confirm("¿Estás seguro de que deseas eliminar este chat?");
+        if (!confirmDelete) {
+            return; 
+        }
+        try {
+            const response = await fetch(`/api/chat/${id}`, {
+                method: "DELETE",
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || "Failed to delete chat");
+            }
+
+            setChats((prevChats) => prevChats.filter((chat) => chat.id !== id));
+            alert('Chat Eliminado')
+        } catch (error) {
+            console.error("Error deleting chat:", error);
+        }
+    };
+
     return (
         <div className={styles.container}>
             <Title level={1}>Chats</Title>
             {isLoading ? (
                 <Spinner />
             ) : (
-                <ChatList chats={chats} onChatClick={openModal} />
+                <ChatList chats={chats} onChatClick={openModal} onDelete={handleDeleteChat} />
             )}
             <Modal isOpen={!!selectedChat} onClose={closeModal}>
                 {selectedChat && (

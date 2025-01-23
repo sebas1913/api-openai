@@ -1,5 +1,6 @@
 import Title from '@/UI/atoms/title/Title';
 import styles from './chat-list.module.scss';
+import { Icons } from '@/UI/atoms/icons/Icons';
 import Paragraph from '@/UI/atoms/paragraph/Paragraph';
 
 type Chat = {
@@ -12,9 +13,10 @@ type Chat = {
 type ChatListProps = {
   chats: Chat[];
   onChatClick: (chat: Chat) => void;
+  onDelete: (id: number) => void;
 };
 
-const ChatList: React.FC<ChatListProps> = ({ chats,onChatClick }) => {
+const ChatList: React.FC<ChatListProps> = ({ chats, onChatClick, onDelete }) => {
   const groupedChats = chats.reduce((acc, chat) => {
     const date = new Date(chat.createdAt).toLocaleDateString('es-ES', {
       day: 'numeric',
@@ -35,9 +37,16 @@ const ChatList: React.FC<ChatListProps> = ({ chats,onChatClick }) => {
           <Title level={3} className={styles.title}>{date}</Title>
           <ul>
             {chatsOnDate.map((chat) => (
-              <li key={chat.id} className={styles.list} onClick={() => onChatClick(chat)}>
-                <Paragraph>{chat.question}</Paragraph>
-              </li>
+              <div className={styles.chatsContainer}>
+                <li key={chat.id} className={styles.list} onClick={() => onChatClick(chat)}>
+                  <Paragraph>{chat.question}</Paragraph>
+                </li>
+                <div className={styles.btnDeleteContainer} onClick={() => onDelete(chat.id)}>
+                  <button className={styles.btnDelete}>
+                    {Icons.delete}
+                  </button>
+                </div>
+              </div>
             ))}
           </ul>
         </div>
