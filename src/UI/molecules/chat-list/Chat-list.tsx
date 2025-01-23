@@ -37,8 +37,8 @@ const ChatList: React.FC<ChatListProps> = ({ chats, onChatClick, onDelete }) => 
           <Title level={3} className={styles.title}>{date}</Title>
           <ul>
             {chatsOnDate.map((chat) => (
-              <div className={styles.chatsContainer}>
-                <li key={chat.id} className={styles.list} onClick={() => onChatClick(chat)}>
+              <div className={styles.chatsContainer} key={chat.id}>
+                <li className={styles.list} onClick={() => onChatClick(chat)}>
                   <Paragraph>{chat.question}</Paragraph>
                 </li>
                 <div className={styles.btnDeleteContainer} onClick={() => onDelete(chat.id)}>
