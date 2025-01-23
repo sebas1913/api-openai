@@ -11,7 +11,7 @@
 
         .title {
             color: $color-black;
-            padding: 0.2rem 0;
+            padding: 0.3rem 0;
         }
 
         .list {
@@ -19,8 +19,7 @@
             list-style: none;
             text-decoration: underline;
             cursor: pointer;
+            padding: 0.1rem 0;
         }
     }
-
-
 }

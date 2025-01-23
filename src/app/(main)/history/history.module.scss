@@ -1,4 +1,11 @@
 .container{
     width: 65%;
     margin: 2.5rem auto 0;
+
+    .headerModal{
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 0.8rem;
+    }
+
 }

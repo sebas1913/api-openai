@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import styles from './history.module.scss';
 import Spinner from "@/UI/atoms/spinner/Spinner";
 import ChatList from "@/UI/molecules/chat-list/Chat-list";
@@ -39,20 +40,23 @@ export default function History() {
     };
     return (
         <div className={styles.container}>
-            <Title level={1}>Chats</Title>
-            {isLoading ? (
-                <Spinner />
-            ) : (
-                <ChatList chats={chats} onChatClick={openModal} />
-            )}
-            <Modal isOpen={!!selectedChat} onClose={closeModal}>
-                {selectedChat && (
-                    <div>
-                        <Message text={`Pregunta: ${selectedChat.question}`} />
-                        <Message text={`Respuesta: ${selectedChat.answer}`} />
+        <Title level={1}>Chats</Title>
+        {isLoading ? (
+            <Spinner />
+        ) : (
+            <ChatList chats={chats} onChatClick={openModal} />
+        )}
+        <Modal isOpen={!!selectedChat} onClose={closeModal}>
+            {selectedChat && (
+                <div>
+                    <div className={styles.headerModal}>
+                        <Image src={'/images/IA.png'} height={30} width={40} alt="Logo SIEK" />
+                        <Title level={3}>{selectedChat.question}</Title>
                     </div>
-                )}
-            </Modal>
-        </div>
+                    <Message text={selectedChat.answer} isModal={true} />
+                </div>
+            )}
+        </Modal>
+    </div>
     );
 }
