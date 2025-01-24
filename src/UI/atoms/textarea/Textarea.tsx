@@ -8,9 +8,17 @@ interface TextareaProps {
     maxLength?: number;
     value?: string;
     onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    onEnterPress?: () => void; 
 }
 
-const Textarea: React.FC<TextareaProps> = ({ placeholder, value, onChange, className, maxLength, ...props }) => {
+const Textarea: React.FC<TextareaProps> = ({ placeholder, value, onChange, className, maxLength, onEnterPress, ...props }) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            if (onEnterPress) onEnterPress();
+        }
+    };
+
     return (
         <textarea
             className={`textarea ${className || ''}`}
@@ -18,6 +26,7 @@ const Textarea: React.FC<TextareaProps> = ({ placeholder, value, onChange, class
             maxLength={maxLength || 150}
             value={value}
             onChange={onChange}
+            onKeyDown={handleKeyDown}
             {...props}
         />
     );

@@ -21,12 +21,34 @@ export async function POST(request: Request) {
             )
         }
 
+        if (question.length < 10 || question.length > 255) {
+            return NextResponse.json(
+                { error: 'La pregunta debe tener entre 10 y 255 caracteres' },
+                { status: 400 }
+            );
+        }
+
         const gptResponse = await openai.chat.completions.create({
             model: 'gpt-3.5-turbo',
             messages: [{ role: 'user', content: question }],
+            max_tokens: 1250, // Aproximadamente 5000 caracteres (1250 * 4)
         })
 
-        const answer = gptResponse.choices[0].message.content
+        const answer = gptResponse.choices[0]?.message?.content;
+
+        if (!answer) {
+            return NextResponse.json(
+                { error: 'siekGPT response is empty or invalid' },
+                { status: 500 }
+            );
+        }
+
+        if (answer.length > 5000) {
+            return NextResponse.json(
+                { error: 'La respuesta supera la longitud máxima de 5000 caracteres' },
+                { status: 400 }
+            );
+        }
 
         const query = await prisma.query.create({
             data: {
