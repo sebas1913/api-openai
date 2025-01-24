@@ -14,12 +14,42 @@
             padding: 0.3rem 0;
         }
 
+        .chatsContainer {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         .list {
             color: $color-text;
             list-style: none;
             text-decoration: underline;
             cursor: pointer;
             padding: 0.1rem 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .btnDeleteContainer {
+            width: auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .btnDelete {
+                background-color: transparent;
+                color: $color-white;
+                border: none;
+                cursor: pointer;
+                border-radius: 0.3rem;
+
+                svg {
+                    fill: $color-danger;
+                    width: 1.3rem;
+                    height: 1.3rem;
+                }
+            }
         }
     }
 }

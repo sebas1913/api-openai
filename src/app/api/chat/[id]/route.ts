@@ -63,7 +63,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 
         const updatedQuery = await prisma.query.update({
             where: { id: parseInt(id, 10) },
-            data: { question, answer },
+            data: { question, answer, createdAt: new Date()},
         });
 
         return NextResponse.json(updatedQuery, { status: 200 });
