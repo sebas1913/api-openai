@@ -57,9 +57,24 @@ export async function PUT(request: Request, { params }: { params: { id: string }
         const gptResponse = await openai.chat.completions.create({
             model: 'gpt-3.5-turbo',
             messages: [{ role: 'user', content: question }],
+            max_tokens: 1250,
         });
 
-        const answer = gptResponse.choices[0].message.content;
+        const answer = gptResponse.choices[0]?.message?.content;
+
+        if (!answer) {
+            return NextResponse.json(
+                { error: 'siekGPT response is empty or invalid' },
+                { status: 500 }
+            );
+        }
+
+        if (answer.length > 5000) {
+            return NextResponse.json(
+                { error: 'Generated answer exceeds 5000 characters' },
+                { status: 400 }
+            );
+        }
 
         const updatedQuery = await prisma.query.update({
             where: { id: parseInt(id, 10) },
