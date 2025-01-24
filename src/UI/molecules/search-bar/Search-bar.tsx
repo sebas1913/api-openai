@@ -20,6 +20,7 @@ const SearchBar = ({ placeholder, value, onChange, onSend, disabled }: SearchBar
                 maxLength={255}
                 value={value}
                 onChange={onChange}
+                onEnterPress={onSend}
                 disabled={disabled}
             />
             <Button
