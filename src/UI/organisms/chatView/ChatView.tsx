@@ -34,11 +34,18 @@ export default function ChatView() {
                             <Message text={message.content} />
                         </div>
                     ))}
+
+                    {/* Mostrar el error como un mensaje de asistente */}
+                    {error && (
+                        <div className={`${styles.messageWrapper} ${styles.assistantMessage}`}>
+                            <div className={styles.avatar}>
+                                <Image src="/images/IA.png" alt="Logo IA" width={48} height={40} />
+                            </div>
+                            <Message text={error} />
+                        </div>
+                    )}
                 </div>
             )}
-
-            {/* Mostrar el error si existe */}
-            {error && <div className={styles.errorMessage}>{error}</div>}
 
             <div className={styles.searchBarWrapper}>
                 <SearchBar

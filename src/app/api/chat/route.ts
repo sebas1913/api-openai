@@ -23,7 +23,7 @@ export async function POST(request: Request) {
 
         if (question.length < 10 || question.length > 255) {
             return NextResponse.json(
-                { error: 'Question must be between 10 and 255 characters long' },
+                { error: 'La pregunta debe tener entre 10 y 255 caracteres' },
                 { status: 400 }
             );
         }
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
 
         if (answer.length > 5000) {
             return NextResponse.json(
-                { error: 'Answer exceeds the maximum length of 5000 characters' },
+                { error: 'La respuesta supera la longitud máxima de 5000 caracteres' },
                 { status: 400 }
             );
         }
