@@ -16,3 +16,10 @@
     max-width: 97%;
     font-size: 0.8rem;
 }
+
+@media (max-width: 768px) {
+    .messageContainer {
+        padding: 0.5rem;
+        font-size: 0.7rem;
+    }
+}

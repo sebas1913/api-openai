@@ -22,11 +22,12 @@
     &::-webkit-scrollbar-track {
         background: $color-secondary;
     }
-
 }
 
-@media (max-width: 600px) {
-    .input{
-        width: 15rem;
+@media (max-width: 768px) {
+    .textarea{
+        width: 95%;
+        font-size: 0.9rem;
+        padding: 0.7rem;
     }
 }

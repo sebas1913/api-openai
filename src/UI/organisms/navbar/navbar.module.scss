@@ -24,3 +24,10 @@
         }
     }
 }
+
+@media (max-width: 768px) {
+    .navbar{
+        justify-content: space-between;
+        padding: 1rem;
+    }
+}

@@ -35,3 +35,18 @@
         }
     }
 }
+
+
+@media (max-width: 768px) {
+    .modalOverlay {
+        .modalContent {
+            width: 95%;
+            padding: 2rem 1.5rem;
+
+            .closeButton{
+                top: 0.8rem;
+                right: 0.8rem;
+            }
+        }
+    }
+}

@@ -4,6 +4,7 @@ import Message from "@/UI/molecules/message-container/Message";
 import styles from "./chat.module.scss";
 import Image from "next/image";
 import { useChatService } from "@/app/infraestructure/service/chat.service";
+import Title from "@/UI/atoms/title/Title";
 
 export default function ChatView() {
     const { messages, question, isLoading, error, setQuestion, handleSendMessage } = useChatService();
@@ -12,9 +13,9 @@ export default function ChatView() {
         <div>
             {messages.length === 0 ? (
                 <div className={styles.containerTitles}>
-                    <h2>¿Cómo puedo ayudarte con tu búsqueda?</h2>
+                    <Title level={2}>¿Cómo puedo ayudarte con tu búsqueda?</Title>
                     <div className={styles.logo}>
-                        <Image src="/images/IA.png" alt="" width={70} height={50} />
+                        <Image src="/images/IA.png" alt="Logo SIEK" width={68} height={47} />
                     </div>
                 </div>
             ) : (
@@ -22,13 +23,12 @@ export default function ChatView() {
                     {messages.map((message, index) => (
                         <div
                             key={index}
-                            className={`${styles.messageWrapper} ${
-                                message.role === "user" ? styles.userMessage : styles.assistantMessage
-                            }`}
+                            className={`${styles.messageWrapper} ${message.role === "user" ? styles.userMessage : styles.assistantMessage
+                                }`}
                         >
                             {message.role === "assistant" && (
                                 <div className={styles.avatar}>
-                                    <Image src="/images/IA.png" alt="Logo IA" width={48} height={40} />
+                                    <Image src="/images/IA.png" alt="Logo Siek" width={48} height={40} layout="responsive" sizes="(max-width: 768px) 8vw, (max-width: 1024px) 3vw, 3vw" />
                                 </div>
                             )}
                             <Message text={message.content} />
@@ -39,7 +39,7 @@ export default function ChatView() {
                     {error && (
                         <div className={`${styles.messageWrapper} ${styles.assistantMessage}`}>
                             <div className={styles.avatar}>
-                                <Image src="/images/IA.png" alt="Logo IA" width={48} height={40} />
+                                <Image src="/images/IA.png" alt="Logo IA" width={48} height={40} layout="responsive" sizes="(max-width: 768px) 8vw, (max-width: 1024px) 3vw, 3vw"/>
                             </div>
                             <Message text={error} />
                         </div>

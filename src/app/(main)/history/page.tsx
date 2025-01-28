@@ -63,7 +63,7 @@ export default function History() {
 
     return (
         <div className={styles.container}>
-        <Title level={1}>Chats</Title>
+        <Title level={1} className={styles.title}>Historial de chats</Title>
         {isLoading ? (
             <Spinner />
         ) : (
@@ -73,8 +73,8 @@ export default function History() {
             {selectedChat && (
                 <div>
                     <div className={styles.headerModal}>
-                        <Image src={'/images/IA.png'} height={30} width={40} alt="Logo SIEK" />
-                        <Title level={3}>{selectedChat.question}</Title>
+                        <Image src={'/images/IA.png'} height={27} width={37} alt="Logo SIEK" />
+                        <Title level={3} className={styles.modalTitle}>{selectedChat.question}</Title>
                     </div>
                     <Message text={selectedChat.answer} isModal={true} />
                 </div>
